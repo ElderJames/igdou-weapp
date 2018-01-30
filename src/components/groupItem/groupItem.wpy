@@ -1,0 +1,8 @@
+<template>
+    <view class="groupitem">
+        --<text class="id">.</text>
+        <text class="name" @tap="tap"> </text>
+    </view>
+</template>
+<style lang="scss" src="./groupItem.scss" ></style>
+<script src="./groupItem.ts" lang="typescript"></script>

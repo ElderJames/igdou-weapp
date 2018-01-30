@@ -1,0 +1,13 @@
+<template>
+    <view class="group">
+        <text class="id">. </text>
+        <text class="name" @tap="tap"></text>
+        <view>
+            <repeat for="" item="item">
+            <groupitem :gitem="item"></groupitem>
+            </repeat>
+        </view>
+    </view>
+</template>
+<style lang="scss" src="./group.scss" ></style>
+<script src="./group.ts" lang="typescript"></script>
