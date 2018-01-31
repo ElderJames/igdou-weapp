@@ -15,7 +15,7 @@ import testMixin from '@/mixins/test'
 
 export default class Main extends Page {
     config = {
-        navigationBarTitleText: 'test'
+        navigationBarTitleText: '校园资讯'
     }
     components = {
         panel: Panel,
@@ -29,56 +29,26 @@ export default class Main extends Page {
     mixins = [testMixin]
 
     data = {
-        mynum: 20,
-        userInfo: {
-            nickName: '加载中...'
-        },
-        normalTitle: '原始标题',
-        setTimeoutTitle: '标题三秒后会被修改',
-        count: 0,
-        netrst: '',
-        groupList: [
+        newsList: [
             {
-                id: 1,
-                name: '点击改变',
-                list: [
-                    {
-                        childid: '1.1',
-                        childname: '子项，点我改变'
-                    }, {
-                        childid: '1.2',
-                        childname: '子项，点我改变'
-                    }, {
-                        childid: '1.3',
-                        childname: '子项，点我改变'
-                    }
-                ]
+                thumbnail: "../../assets/news.jpg",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
             },
             {
-                id: 2,
-                name: '点击改变',
-                list: [
-                    {
-                        childid: '2.1',
-                        childname: '子项，点我改变'
-                    }, {
-                        childid: '2.2',
-                        childname: '子项，点我改变'
-                    }, {
-                        childid: '2.3',
-                        childname: '子项，点我改变'
-                    }
-                ]
+                thumbnail: "../../assets/news.jpg",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
             },
             {
-                id: 3,
-                name: '点击改变',
-                list: [
-                    {
-                        childid: '3.1',
-                        childname: '子项，点我改变'
-                    }
-                ]
+                thumbnail: "../../assets/news.jpg",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
+            },
+            {
+                thumbnail: "../../assets/news.jpg",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
             }
         ]
     }

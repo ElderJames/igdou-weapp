@@ -1,63 +1,38 @@
 <template>
-    <view class="container">
-    <view class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="" background-size="cover"/>
-      <view class="userinfo-nickname"></view>
+<view class="container">
+  <view class="zan-panel">
+     <repeat for="{{newsList}}" key="index" index="index" item="item">
+    <view class="zan-card">
+      <view class="zan-card__thumb">
+        <image class="zan-card__img"
+          src="{{item.thumbnail}}"
+          mode="aspectFit"
+        />
+      </view>
+      <view class="zan-card__detail">
+        <view class="zan-card__detail-row">
+          <!-- <view class="zan-card__right-col">¥ 999.99</view> -->
+          <view class="zan-ellipsis--l2">
+             {{item.title}}
+          </view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <!-- <view class="zan-card__right-col">x2</view> -->
+          <view class="">
+           {{item.description}}
+          </view>
+        </view>
+
+        <!-- <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__left-col zan-c-red">已发货</view>
+        </view> -->
+      </view>
     </view>
-
-    <panel>
-      <view class="title" slot="title">测试数据绑定</view>
-
-      <text class="info"></text>
-      <text class="info"></text>
-      <text class="info"></text>
-      <text class="info"></text>
-      <text class="info"></text>
-      <button @tap="plus('a')" size="mini">  +  </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">其它测试</view>
-      <button @tap="toast" size="mini">第三方组件</button>
-      <button @tap="communicate" size="mini">组件通信</button>
-      <button @tap="tap" size="mini">混合TAP事件</button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试并发网络请求</view>
-      <view>返回结果: <text></text></view>
-      <button @tap="request" size="mini"> 点我发起10个请求 </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件</view>
-
-      <text class="testcounter">计数组件1: </text>
-      <view class="counterview">
-        <counter1 @index-emit.user="counterEmit" />
-      </view>
-
-      <text class="testcounter">计数组件2: </text>
-
-      <view class="counterview">
-        <counter2 :num.sync="mynum"></counter2>
-      </view>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件Repeat</view>
-      <repeat for="" index="index" item="item" key="key">
-        <group :grouplist="item" :indexa="index"></group>
-      </repeat>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试列表</view>
-      <list></list>
-    </panel>
-
-    <toast />
+       </repeat>
   </view>
+
+</view>
 </template>
 <style lang="scss" src="./index.scss"></style>
 <script src="./index.ts" lang="typescript"></script>
