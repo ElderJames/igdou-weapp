@@ -26,9 +26,15 @@ module.exports = {
                 path.join(__dirname, 'src/style'),
             ]
         },
+        less: {
+            sourceMap: true,
+            includePaths: [
+                path.join(__dirname, 'src/style'),
+            ]
+        },
         typescript: {
             // compilerOptions: {
-                // module: "system"
+            // module: "system"
             // }
         },
         babel: {
