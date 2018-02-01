@@ -31,6 +31,16 @@ export default class Main extends Page {
     data = {
         newsList: [
             {
+                thumbnail: "https://pic4.zhimg.com/v2-111f3791674c13ae49afbfb26e457b84_b.gif",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
+            },
+            {
+                thumbnail: "../../assets/news.jpg",
+                title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
+                description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
+            },
+            {
                 thumbnail: "../../assets/news.jpg",
                 title: "学校召开领导干部报告个人有关事项培训暨动员部署会",
                 description: "1月24日上午，学校召开2018年领导干部报告个人有关事项培训暨动员部署会。会议由学校党委副书记向献兵主持.."
@@ -111,21 +121,19 @@ export default class Main extends Page {
         }
     }
 
-    onLoad() {
-        let self = this
-        this.$parent.getUserInfo(function (userInfo) {
-            if (userInfo) {
-                self.userInfo = userInfo
-            }
-            self.normalTitle = '标题已被修改'
+     onLoad() {
+        // await this.$parent.login();
+        // this.userInfo = await this.$parent.getUserInfo();
 
-            self.setTimeoutTitle = '标题三秒后会被修改'
-            setTimeout(() => {
-                self.setTimeoutTitle = '到三秒了'
-                self.$apply()
-            }, 3000)
+        // this.normalTitle = '标题已被修改'
 
-            self.$apply()
-        })
+        // this.setTimeoutTitle = '标题三秒后会被修改'
+        // setTimeout(() => {
+        //     this.setTimeoutTitle = '到三秒了'
+        //     this.$apply()
+        // }, 3000)
+
+        // self.$apply()
+
     }
 }

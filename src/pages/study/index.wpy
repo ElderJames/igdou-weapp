@@ -1,0 +1,7 @@
+<template>
+<view class="container">
+  <view class="doc-title zan-hairline--bottom zan-hairline--bottom"> 学习  </view>
+</view>
+</template>
+
+<script src="./index.ts" lang="typescript"></script>

@@ -1,6 +1,9 @@
 import wepy from 'wepy'
 
 export default class testMixin extends wepy.mixin {
+    setTitle() {
+
+    }
     data = {
         mixin: 'This is mixin data.'
     }

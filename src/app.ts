@@ -4,14 +4,54 @@ import 'wepy-async-function'
 export default class extends wepy.app {
     config = {
         pages: [
-            'pages/index/index'
+            'pages/index/index',
+            "pages/study/index",
+            "pages/life/index",
+            "pages/me/index",
         ],
+        // window: {
+        //     backgroundTextStyle: 'light',
+        //     navigationBarBackgroundColor: '#fff',
+        //     navigationBarTitleText: '爱海大',
+        //     navigationBarTextStyle: 'black'
+        // },
         window: {
-            backgroundTextStyle: 'light',
-            navigationBarBackgroundColor: '#fff',
-            navigationBarTitleText: '爱海大',
-            navigationBarTextStyle: 'black'
-        }
+            "navigationBarBackgroundColor": "#f7f7f8",
+            "navigationBarTextStyle": "black",
+            "navigationBarTitleText": "爱海大",
+            "backgroundColor": "#efeff4",
+            "backgroundTextStyle": "dark"
+        },
+        tabBar: {
+            "color": "#888888",
+            "selectedColor": "#04BE02",
+            "borderStyle": "white",
+            "backgroundColor": "#f7f7f8",
+            "list": [{
+                "pagePath": "pages/index/index",
+                "iconPath": "assets/images/iconfont-demo.png",
+                "selectedIconPath": "assets/images/iconfont-demo-active.png",
+                "text": "资讯"
+            },
+            {
+                "pagePath": "pages/study/index",
+                "iconPath": "assets/images/iconfont-about.png",
+                "selectedIconPath": "assets/images/iconfont-about-active.png",
+                "text": "学习"
+            },
+            {
+                "pagePath": "pages/life/index",
+                "iconPath": "assets/images/iconfont-about.png",
+                "selectedIconPath": "assets/images/iconfont-about-active.png",
+                "text": "生活"
+            },
+            {
+                "pagePath": "pages/me/index",
+                "iconPath": "assets/images/iconfont-about.png",
+                "selectedIconPath": "assets/images/iconfont-about-active.png",
+                "text": "我"
+            }]
+        },
     }
 
     globalData = {
