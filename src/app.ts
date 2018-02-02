@@ -9,24 +9,18 @@ export default class extends wepy.app {
             "pages/life/index",
             "pages/me/index",
         ],
-        // window: {
-        //     backgroundTextStyle: 'light',
-        //     navigationBarBackgroundColor: '#fff',
-        //     navigationBarTitleText: '爱海大',
-        //     navigationBarTextStyle: 'black'
-        // },
         window: {
-            "navigationBarBackgroundColor": "#f7f7f8",
-            "navigationBarTextStyle": "black",
+            "navigationBarBackgroundColor": "#e91e63",
+            "navigationBarTextStyle": "white",
             "navigationBarTitleText": "爱海大",
-            "backgroundColor": "#efeff4",
-            "backgroundTextStyle": "dark"
+            "backgroundColor": "#fff",
+            "backgroundTextStyle": "light"
         },
         tabBar: {
             "color": "#888888",
-            "selectedColor": "#04BE02",
+            "selectedColor": "#fff",
             "borderStyle": "white",
-            "backgroundColor": "#f7f7f8",
+            "backgroundColor": "#e91e63",
             "list": [{
                 "pagePath": "pages/index/index",
                 "iconPath": "assets/images/iconfont-demo.png",

@@ -4,7 +4,7 @@ import testMixin from '@/mixins/test'
 
 export default class MePage extends Page {
     config = {
-        navigationBarTitleText: '生活'
+        navigationBarTitleText: '我'
     }
     components = {}
 

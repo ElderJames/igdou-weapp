@@ -1,7 +1,9 @@
 <template>
-<view class="container">
-  <view class="doc-title zan-hairline--bottom zan-hairline--bottom"> 学习  </view>
-</view>
+  <view class="container">
+    <view class="zan-panel">
+      <tab-view class="tab-view"/>
+    </view>
+  </view>
 </template>
 
 <script src="./index.ts" lang="typescript"></script>
