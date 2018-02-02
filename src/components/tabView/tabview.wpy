@@ -2,7 +2,7 @@
   <view class="stv-container">
     <view class="tab-bar">
       <repeat for="{{tabs}}" key="index" index="index" item="item">
-        <view @tap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.lineWidth}}px">
+        <view @tap="handlerTabTap" data-index="{{index}}" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
           <text>{{item}}</text>
         </view>
       </repeat>

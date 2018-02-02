@@ -22,6 +22,13 @@ export default class tabView extends Component {
         activeTab: 0
     }
 
+    complated = {
+        showActiveClass(index: number) {
+            console.log(index);
+            return this.data.activeTab == index ? "tab-active" : "";
+        }
+    }
+
     async onLoad(options: any) {
         try {
             let { tabs } = this.data;
@@ -47,7 +54,6 @@ export default class tabView extends Component {
             this.data.stv.tStart = true;
             this.tapStartTime = e.timeStamp;
             this.$apply();
-            // this.setData({ stv: this.data.stv })
         },
 
         handlerMove(e) {
@@ -61,9 +67,8 @@ export default class tabView extends Component {
             } else if (stv.offset >= stv.windowWidth * (this.tabsCount - 1)) {
                 stv.offset = stv.windowWidth * (this.tabsCount - 1);
             }
-            this.$apply();
             this.data.stv = stv;
-            // this.setData({ stv: stv });
+            this.$apply();
         },
 
         handlerCancel(e) {
@@ -94,7 +99,6 @@ export default class tabView extends Component {
                     let page = Math.round(offset / windowWidth);
                     if (activeTab != page) {
                         activeTab = page;
-                        // this.setData({ activeTab: page })
                     }
                     stv.offset = stv.windowWidth * page;
                 }
@@ -102,7 +106,6 @@ export default class tabView extends Component {
                 let page = Math.round(offset / windowWidth);
                 if (activeTab != page) {
                     activeTab = page;
-                    // this.setData({ activeTab: page })
                 }
                 stv.offset = stv.windowWidth * page;
             }
@@ -111,23 +114,17 @@ export default class tabView extends Component {
             this.data.stv = stv;
             this.data.activeTab = activeTab;
             this.$apply();
-
-            console.log(this.data);
-            // this.$parent.setData({ stv: this.data.stv })
         },
 
         handlerTabTap(e) {
             this._updateSelectedPage(e.currentTarget.dataset.index);
+            this.$apply();
         }
     }
     _updateSelectedPage(page) {
         let { tabs, stv, activeTab } = this.data;
         this.data.activeTab = page;
-        // this.setData({ activeTab: activeTab })
         stv.offset = stv.windowWidth * page;
         this.data.stv = stv;
-        console.log(this.data);
-        // this.setData({ stv: this.data.stv })
-        this.$apply();
     }
 }

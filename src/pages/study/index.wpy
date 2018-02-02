@@ -1,5 +1,7 @@
 <template>
-  <tab-view class="tab-view"/>
+  <view class="container">
+    <tab-view class="tab-view"/>
+  </view>
 </template>
 
 <style lang="scss" src="./index.scss"></style>
