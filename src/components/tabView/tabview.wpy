@@ -1,19 +1,19 @@
 <template name="tab-view">
   <view class="stv-container">
     <view class="tab-bar">
-      <repeat for="{{tabs}}" key="unique" index="{{index}}" >
-        <view  @tap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
-        <text>{{item}}</text>
-      </view>
+      <repeat for="{{tabs}}" key="index" index="index" item="item">
+        <view @tap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.lineWidth}}px">
+          <text>{{item}}</text>
+        </view>
       </repeat>
       <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
     </view>
     <view class="scroll-view">
       <view @touchstart="handlerStart" @touchmove.stop="handlerMove" @touchcancel="handlerCancel" @touchend="handlerEnd"  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
-        <repeat for="{{tabs}}" key="unique" >
+        <repeat for="{{tabs}}" key="index" >
           <view style="width: {{stv.windowWidth}}px;" class="one-scene">
             <scroll-view style="height:100%" scroll-y>
-              <repeat  for="1234567777777" key="unique">
+              <repeat for="1234567777777" key="unique" index="index">
                 <view>
                   <text>这是第{{index+1}}个页面</text>
                 </view>

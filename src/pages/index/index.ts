@@ -121,7 +121,7 @@ export default class Main extends Page {
         }
     }
 
-     onLoad() {
+    onLoad() {
         // await this.$parent.login();
         // this.userInfo = await this.$parent.getUserInfo();
 

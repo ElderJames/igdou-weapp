@@ -1,9 +1,6 @@
 <template>
-  <view class="container">
-    <view class="zan-panel">
-      <tab-view class="tab-view"/>
-    </view>
-  </view>
+  <tab-view class="tab-view"/>
 </template>
 
+<style lang="scss" src="./index.scss"></style>
 <script src="./index.ts" lang="typescript"></script>
