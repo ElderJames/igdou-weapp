@@ -1,5 +1,5 @@
 <template name="tab-view">
-  <view class="stv-container">
+<view class="stv-container">
     <view class="tab-bar">
       <repeat for="{{tabs}}" key="index" index="index" item="item">
         <view @tap="handlerTabTap" data-index="{{index}}" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
@@ -13,11 +13,13 @@
         <repeat for="{{tabs}}" key="index" >
           <view style="width: {{stv.windowWidth}}px;" class="one-scene">
             <scroll-view style="height:100%" scroll-y>
-              <repeat for="1234567777777" key="unique" index="index">
-                <view>
-                  <text>这是第{{index+1}}个页面</text>
-                </view>
-              </repeat>
+              <slot>
+                <repeat for="1234567777777" key="unique" index="index">
+                  <view>
+                    <text>这是第{{index+1}}个页面</text>
+                  </view>
+                </repeat>
+              </slot>
             </scroll-view>
           </view>
         </repeat>
@@ -26,6 +28,7 @@
   </view>
 </template>
 
-<style lang="less" src="./tabview.less" ></style>
-<script src="./tabview.ts" lang="typescript"></script>
+<style lang="less" src="./tabview.less" >
 
+</style>
+<script src="./tabview.ts" lang="typescript"></script>
