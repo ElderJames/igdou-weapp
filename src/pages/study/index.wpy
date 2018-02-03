@@ -1,12 +1,19 @@
 <template>
   <view class="container">
-    <tab-view class="tab-view">
-      插槽内容。
+    <tab-view class="tab-view" :tabs="tablist">
+      <view>hhh</view>
+      <view>hhh</view>
+      <view>hhh</view>
+      <view>hhh</view>
+      <view>hhh</view>
     </tab-view>
   </view>
 </template>
 
 <style lang="scss" src="./index.scss">
+
+</style>
+<style lang="scss" src="../../style/md-font/material-icons.scss">
 
 </style>
 <script src="./index.ts" lang="typescript"></script>

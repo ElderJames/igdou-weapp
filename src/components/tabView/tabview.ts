@@ -9,14 +9,12 @@ export default class tabView extends Component {
   tapStartX: number;
   tapStartY: number;
 
+  props = {
+    tabs: Object
+  };
+
   data = {
-    tabs: ["收入", "支出", "通知", "我的"],
-    stv: {
-      windowWidth: 0,
-      lineWidth: 0,
-      offset: 0,
-      tStart: false
-    },
+    stv: { windowWidth: 0, lineWidth: 0, offset: 0, tStart: false },
     activeTab: 0
   };
 
@@ -53,7 +51,6 @@ export default class tabView extends Component {
       this.tapStartTime = e.timeStamp;
       this.$apply();
     },
-
     handlerMove(e) {
       let { clientX, clientY } = e.touches[0];
       let { stv } = this.data;
@@ -68,9 +65,7 @@ export default class tabView extends Component {
       this.stv = stv;
       this.$apply();
     },
-
     handlerCancel(e) {},
-
     handlerEnd(e) {
       let { clientX, clientY } = e.changedTouches[0];
       let endTime = e.timeStamp;
@@ -113,7 +108,6 @@ export default class tabView extends Component {
 
       console.log(this.data);
     },
-
     handlerTabTap(e) {
       this._updateSelectedPage(e.currentTarget.dataset.index);
       this.$apply();

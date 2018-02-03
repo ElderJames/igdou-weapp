@@ -14,11 +14,6 @@
           <view style="width: {{stv.windowWidth}}px;" class="one-scene">
             <scroll-view style="height:100%" scroll-y>
               <slot>
-                <repeat for="1234567777777" key="unique" index="index">
-                  <view>
-                    <text>这是第{{index+1}}个页面</text>
-                  </view>
-                </repeat>
               </slot>
             </scroll-view>
           </view>
