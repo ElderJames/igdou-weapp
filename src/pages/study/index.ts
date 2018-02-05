@@ -1,13 +1,16 @@
 import Page from "page";
 import testMixin from "@/mixins/test";
-import tabView from "@/components/tabView/tabview";
+import Swiper from "@/components/swiper/swiper";
 
 export default class StudyPage extends Page {
   config = { navigationBarTitleText: "学习" };
-  components = { "tab-view": tabView };
+  components = { swiper: Swiper };
 
   data = {
-    tablist: ["一", "二", "三", "四", "五", "六"]
+    swiper: {
+      tabTiles: ["一", "二", "三", "四", "五", "六", "日"],
+      slideLength: 7
+    }
   };
   computed = {};
   methods = {};

@@ -1,5 +1,6 @@
 import Component from "component";
 import wepy from "wepy";
+import Swiper from "@/components/swiper/swiper";
 
 export default class tabView extends Component {
   windowWidth: number;
@@ -9,14 +10,22 @@ export default class tabView extends Component {
   tapStartX: number;
   tapStartY: number;
 
-  props = {
-    tabs: Object
-  };
+  components = { swiper: Swiper };
+
+  props = { tabs: Object };
 
   data = {
     stv: { windowWidth: 0, lineWidth: 0, offset: 0, tStart: false },
-    activeTab: 0
-  };
+    activeTab: 0,
+    // tabs: [],
+    swiper: {
+      direction: "horizontal",
+      slideLength: 3,
+      onInit(weswiper) {
+        console.log(weswiper);
+      }
+    }
+  }; //"vertical",
 
   complated = {};
 
@@ -28,12 +37,14 @@ export default class tabView extends Component {
 
   async onLoad(options: any) {
     try {
-      let { tabs } = this.data;
+      let { tabs } = this.props;
+      console.log(this.tabs);
+      this.swiper.slideLength = tabs.length;
+      //this.swiper.slideLength = tabs.length;
       var res = await wepy.getSystemInfoSync();
-      this.stv.lineWidth = res.windowWidth / this.data.tabs.length;
+      this.stv.lineWidth = res.windowWidth / tabs.length;
       this.stv.windowWidth = res.windowWidth;
       this.tabsCount = tabs.length;
-
       this.$apply();
     } catch (e) {
       console.log("tabview error", e);

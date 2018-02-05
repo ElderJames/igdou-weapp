@@ -8,19 +8,9 @@
       </repeat>
       <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
     </view>
-    <view class="scroll-view">
-      <view @touchstart="handlerStart" @touchmove.stop="handlerMove" @touchcancel="handlerCancel" @touchend="handlerEnd"  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
-        <repeat for="{{tabs}}" key="index" index="index" item="item">
-          <view style="width: {{stv.windowWidth}}px;" class="one-scene tab-view-{{index+1}}">
-            <scroll-view style="height:100%" scroll-y>
-              <slot name="item" :title="item">
-               默认
-              </slot>
-            </scroll-view>
-          </view>
-        </repeat>
-      </view>
-    </view>
+    <swiper :option="swiper">
+      <slot>默认</slot>
+    </swiper>
   </view>
 </template>
 
