@@ -10,10 +10,11 @@
     </view>
     <view class="scroll-view">
       <view @touchstart="handlerStart" @touchmove.stop="handlerMove" @touchcancel="handlerCancel" @touchend="handlerEnd"  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
-        <repeat for="{{tabs}}" key="index" >
-          <view style="width: {{stv.windowWidth}}px;" class="one-scene">
+        <repeat for="{{tabs}}" key="index" index="index" item="item">
+          <view style="width: {{stv.windowWidth}}px;" class="one-scene tab-view-{{index+1}}">
             <scroll-view style="height:100%" scroll-y>
-              <slot>
+              <slot name="item" :title="item">
+               默认
               </slot>
             </scroll-view>
           </view>

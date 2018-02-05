@@ -30,7 +30,6 @@ export default class tabView extends Component {
     try {
       let { tabs } = this.data;
       var res = await wepy.getSystemInfoSync();
-      console.log(res);
       this.stv.lineWidth = res.windowWidth / this.data.tabs.length;
       this.stv.windowWidth = res.windowWidth;
       this.tabsCount = tabs.length;
@@ -76,41 +75,37 @@ export default class tabView extends Component {
         //向左
         if (Math.abs(this.tapStartY - clientY) < 50) {
           if (this.tapStartX - clientX > 5) {
-            if (this.activeTab < this.tabsCount - 1) {
-              ++this.activeTab;
+            if (activeTab < this.tabsCount - 1) {
+              ++activeTab;
             }
           } else {
-            if (this.activeTab > 0) {
-              --this.activeTab;
+            if (activeTab > 0) {
+              --activeTab;
             }
           }
-          stv.offset = stv.windowWidth * this.activeTab;
+          stv.offset = stv.windowWidth * activeTab;
         } else {
           //快速滑动 但是Y距离大于50 所以用户是左右滚动
           let page = Math.round(offset / windowWidth);
-          if (this.activeTab != page) {
-            this.activeTab = page;
+          if (activeTab != page) {
+            activeTab = page;
           }
           stv.offset = stv.windowWidth * page;
         }
       } else {
         let page = Math.round(offset / windowWidth);
-        if (this.activeTab != page) {
-          this.activeTab = page;
+        if (activeTab != page) {
+          activeTab = page;
         }
         stv.offset = stv.windowWidth * page;
       }
 
       stv.tStart = false;
       this.stv = stv;
-      //   this.activeTab = this.activeTab;
-      this.$apply();
-
-      console.log(this.data);
+      this.activeTab = activeTab;
     },
     handlerTabTap(e) {
       this._updateSelectedPage(e.currentTarget.dataset.index);
-      this.$apply();
     }
   };
   _updateSelectedPage(page) {
@@ -118,6 +113,5 @@ export default class tabView extends Component {
     stv.offset = stv.windowWidth * page;
     this.stv = stv;
     this.activeTab = page;
-    console.log(this.data);
   }
 }

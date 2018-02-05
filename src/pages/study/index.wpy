@@ -1,11 +1,14 @@
 <template>
   <view class="container">
     <tab-view class="tab-view" :tabs="tablist">
-      <view>hhh</view>
-      <view>hhh</view>
-      <view>hhh</view>
-      <view>hhh</view>
-      <view>hhh</view>
+      <template slot="item" scope="bbb">
+        <view>{{bbb.title}}</view>
+      </template>
+      <!-- <view slot="tab-view-2">hhh2</view>
+      <view slot="tab-view-3">hhh3</view>
+      <view slot="tab-view-4">hhh4</view>
+      <view slot="tab-view-5">hhh5</view>
+      <view slot="tab-view-6">hhh6</view> -->
     </tab-view>
   </view>
 </template>
