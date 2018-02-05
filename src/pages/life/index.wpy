@@ -1,9 +1,15 @@
 <template>
 <view class="container">
-  
-   <view class="doc-title zan-hairline--bottom zan-hairline--bottom"> 生活  </view>
-  
+    <view class="doc-title zan-hairline--bottom zan-hairline--bottom"> 生活  </view>
+    <swiper :option="swiper">
+      <view class="we-slide">slide 1</view>
+      <view class="we-slide">slide 2</view>
+      <view class="we-slide">slide 3</view>
+    </swiper>
 </view>
 </template>
 
 <script src="./index.ts" lang="typescript"></script>
+<style src="./index.scss" lang="scss">
+
+</style>
