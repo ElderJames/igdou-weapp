@@ -17,42 +17,40 @@ export default class extends wepy.app {
       backgroundTextStyle: "light"
     },
     tabBar: {
-      color: "#888888",
-      selectedColor: "#fff",
-      borderStyle: "white",
-      backgroundColor: "#e91e63",
+      color: "#BDBDBD",
+      selectedColor: "#e91e63",
+      borderStyle: "#880E4F",
+      backgroundColor: "#FAFAFA",
       list: [
         {
           pagePath: "pages/index/index",
-          iconPath: "assets/images/iconfont-demo.png",
-          selectedIconPath: "assets/images/iconfont-demo-active.png",
+          iconPath: "assets/tabbar/newspaper.png",
+          selectedIconPath: "assets/tabbar/newspaper2.png",
           text: "资讯"
         },
         {
           pagePath: "pages/study/index",
-          iconPath: "assets/images/iconfont-about.png",
-          selectedIconPath: "assets/images/iconfont-about-active.png",
+          iconPath: "assets/tabbar/book-open-page-variant.png",
+          selectedIconPath: "assets/tabbar/book-open-page-variant2.png",
           text: "学习"
         },
         {
           pagePath: "pages/life/index",
-          iconPath: "assets/images/iconfont-about.png",
-          selectedIconPath: "assets/images/iconfont-about-active.png",
-          text: "生活"
+          iconPath: "assets/tabbar/compass-outline.png",
+          selectedIconPath: "assets/tabbar/compass-outline2.png",
+          text: "发现"
         },
         {
           pagePath: "pages/me/index",
-          iconPath: "assets/images/iconfont-about.png",
-          selectedIconPath: "assets/images/iconfont-about-active.png",
+          iconPath: "assets/tabbar/face.png",
+          selectedIconPath: "assets/tabbar/face2.png",
           text: "我"
         }
       ]
     }
   };
 
-  globalData = {
-    userInfo: null
-  };
+  globalData = { userInfo: null };
 
   constructor() {
     super();
