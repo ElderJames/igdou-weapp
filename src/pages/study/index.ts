@@ -8,8 +8,7 @@ export default class StudyPage extends Page {
 
   data = {
     swiper: {
-      tabTiles: ["一", "二", "三", "四", "五", "六", "日"],
-      slideLength: 7
+      tabTiles: ["一", "二", "三", "四", "五", "六", "日"]
     }
   };
   computed = {};

@@ -2,11 +2,11 @@
   <view class="we-container {{directionClass}}">
     <view class="tab-bar">
       <repeat for="{{option.tabTiles}}" key="index" index="index" item="item">
-        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}}" style="width: {{width/tabTiles.length}}px">
+        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabTiles.length}}px">
           <text>{{item}}</text>
         </view>
       </repeat>
-      <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+      <view style="width: {{stv.lineWidth}}px; left: {{stv.offset}}px" animation="{{lineAnimationData}}"  class="under-line"></view>
     </view>
     <view class="we-wrapper"
       @touchstart="touchstart"
@@ -40,6 +40,7 @@ const DEFAULT = {
   autoplay: 0, //  自动播放间隔，设置为0时不自动播放
   directionViewName: "directionClass", //  对应视图中direction类名
   animationViewName: "animationData", //  对应视图中animation属性名
+  lineAnimationViewName: "lineAnimationData",
   /**
    * 事件回调
    * @type {[type]}
@@ -63,8 +64,10 @@ export default class weSwiper extends wepy.component {
   data = {
     directionClass: "we-container-horizontal",
     animationData: null,
+    lineAnimationData: null,
     stv: { windowWidth: 0, lineWidth: 0, offset: 0, tStart: false },
-    activeTab: 0
+    activeIndex: 0,
+    tabTiles: []
   };
 
   props = {
@@ -246,6 +249,7 @@ export default class weSwiper extends wepy.component {
       self.activeIndex = index;
       self.isBeginning = self.activeIndex === self.initialSlide;
       self.isEnd = self.activeIndex === self.slideLength - 1;
+      this.activeTab = self.activeIndex;
 
       runCallbacks &&
         typeof onSlideChangeStart === "function" &&
@@ -280,7 +284,12 @@ export default class weSwiper extends wepy.component {
       TIMINGFUNCTION: /linear|ease|ease-in|ease-in-out|ease-out|step-start|step-end/
     };
 
-    const { XORY, animationViewName, consoleException } = this;
+    const {
+      XORY,
+      animationViewName,
+      lineAnimationViewName,
+      consoleException
+    } = this;
     try {
       /**
        * 异常处理
@@ -301,6 +310,19 @@ export default class weSwiper extends wepy.component {
       animation[`translate${XORY}`](translate).step(); //  动画描述
 
       this.syncView(animationViewName, animation); //  同步动画到视图
+
+      const lineAnimation = wx.createAnimation({
+        transformOrigin: "50% 50%",
+        duration: speed,
+        timingFunction,
+        delay: 0
+      });
+
+      // lineAnimation[`translate${XORY}`](translate / this.slideLength).step();
+      // this.syncView(lineAnimationViewName, lineAnimation);
+      this.stv.offset = translate / this.slideLength * -1;
+
+      console.log(this.stv.offset);
     } catch (err) {
       consoleException(err, "slideAnimation[Function]");
     }
@@ -336,7 +358,9 @@ export default class weSwiper extends wepy.component {
       initialSlide,
       direction,
       autoplay,
-      directionViewName
+      directionViewName,
+      tabTiles,
+      slideLength
     } = param;
 
     const directionClass =
@@ -349,6 +373,13 @@ export default class weSwiper extends wepy.component {
     this.activeIndex = initialSlide; //  将初始页码赋给activeIndex
     this.noSwiper = false; //  阻止手势滑动
     this.previousIndex = initialSlide; //  返回上一个活动块的索引，切换前的索引
+    this.tabTiles = tabTiles;
+    this.slideLength = tabTiles.length;
+
+    this.stv.windowWidth = this.width;
+    this.stv.lineWidth = this.width / tabTiles.length;
+    this.stv.offset = 0;
+
     this.slideTo(initialSlide, 0);
     typeof autoplay === "number" &&
       autoplay > 0 &&
@@ -372,7 +403,7 @@ export default class weSwiper extends wepy.component {
 
     this.initSwiper(CONFIG);
 
-    console.log(CONFIG);
+    console.log(this);
   }
 }
 </script>
@@ -420,12 +451,14 @@ Page{
 }
 .we-container .tab-bar {
   position: relative;
+  width: 100%;
   display: flex;
   font-size: 30rpx;
   color: #666666;
 }
 .we-container .tab-bar .tab-active {
   color: #e91e63;
+  transition: all 100ms ease;
 }
 .we-container .tab-bar .tab {
   display: flex;
@@ -439,6 +472,19 @@ Page{
   bottom: 0;
   height: 6rpx;
   background-color: #e91e63;
+  transition: all 100ms ease;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
 }
 .we-container .scroll-view {
   position: relative;

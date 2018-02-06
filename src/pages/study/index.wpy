@@ -4,6 +4,10 @@
       <view class="we-slide">slide 1</view>
       <view class="we-slide">slide 2</view>
       <view class="we-slide">slide 3</view>
+      <view class="we-slide">slide 4</view>
+      <view class="we-slide">slide 5</view>
+      <view class="we-slide">slide 6</view>
+      <view class="we-slide">slide 7</view>
     </swiper>
   </view>
 </template>

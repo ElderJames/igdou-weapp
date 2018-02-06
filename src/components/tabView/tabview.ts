@@ -20,10 +20,8 @@ export default class tabView extends Component {
     // tabs: [],
     swiper: {
       direction: "horizontal",
-      slideLength: 3,
-      onInit(weswiper) {
-        console.log(weswiper);
-      }
+      slideLength: 0,
+
     }
   }; //"vertical",
 
