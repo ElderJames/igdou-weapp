@@ -2,7 +2,7 @@
   <view class="we-container {{directionClass}}">
     <view class="tab-bar">
       <repeat for="{{option.tabTiles}}" key="index" index="index" item="item">
-        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}}" >
+        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}} ripple" >
           <text>{{item}}</text>
         </view>
       </repeat>

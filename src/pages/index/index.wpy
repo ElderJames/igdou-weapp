@@ -1,39 +1,41 @@
 <template>
 <view class="container">
   <view class="zan-panel">
-     <repeat for="{{newsList}}" key="index" index="index" item="item">
-    <view class="zan-card" @tap="toast">
-      <view class="zan-card__thumb">
-        <image class="zan-card__img"
-          src="{{item.thumbnail}}"
-          mode="aspectFit"
-        />
-      </view>
-      <view class="zan-card__detail">
-        <view class="zan-card__detail-row">
-          <!-- <view class="zan-card__right-col">¥ 999.99</view> -->
-          <view class="zan-ellipsis--l2">
-             {{item.title}}
-          </view>
+    <repeat for="{{newsList}}" key="index" index="index" item="item">
+      <view class="zan-card ripple" @tap="toast">
+        <view class="zan-card__thumb">
+          <image class="zan-card__img"
+            src="{{item.thumbnail}}"
+            mode="aspectFit"
+          />
         </view>
-
-        <view class="zan-card__detail-row zan-c-gray-darker">
-          <!-- <view class="zan-card__right-col">x2</view> -->
-          <view class="">
-           {{item.description}}
+        <view class="zan-card__detail">
+          <view class="zan-card__detail-row">
+            <!-- <view class="zan-card__right-col">¥ 999.99</view> -->
+            <view class="zan-ellipsis--l2">
+              {{item.title}}
+            </view>
           </view>
-        </view>
 
-        <!-- <view class="zan-card__detail-row zan-c-gray-darker">
-          <view class="zan-card__left-col zan-c-red">已发货</view>
-        </view> -->
+          <view class="zan-card__detail-row zan-c-gray-darker">
+            <!-- <view class="zan-card__right-col">x2</view> -->
+            <view class="">
+            {{item.description}}
+            </view>
+          </view>
+
+          <!-- <view class="zan-card__detail-row zan-c-gray-darker">
+            <view class="zan-card__left-col zan-c-red">已发货</view>
+          </view> -->
+        </view>
       </view>
-    </view>
-       </repeat>
+    </repeat>
   </view>
 
     <toast />
 </view>
 </template>
-<style lang="scss" src="./index.scss"></style>
+<style lang="scss" src="./index.scss">
+
+</style>
 <script src="./index.ts" lang="typescript"></script>
