@@ -2,11 +2,11 @@
   <view class="we-container {{directionClass}}">
     <view class="tab-bar">
       <repeat for="{{option.tabTiles}}" key="index" index="index" item="item">
-        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabTiles.length}}px">
+        <view @tap="tabTaped" data-index="{{index}}" class="tab {{activeIndex==index?'tab-active':''}}" >
           <text>{{item}}</text>
         </view>
       </repeat>
-      <view style="width: {{stv.lineWidth}}px; left: {{stv.offset}}px" animation="{{lineAnimationData}}"  class="under-line"></view>
+      <view style="width: {{tabWidth}}px;" animation="{{lineAnimationData}}" class="under-line"></view>
     </view>
     <view class="we-wrapper"
       @touchstart="touchstart"
@@ -65,8 +65,8 @@ export default class weSwiper extends wepy.component {
     directionClass: "we-container-horizontal",
     animationData: null,
     lineAnimationData: null,
-    stv: { windowWidth: 0, lineWidth: 0, offset: 0, tStart: false },
     activeIndex: 0,
+    tabWidth: 0,
     tabTiles: []
   };
 
@@ -311,6 +311,7 @@ export default class weSwiper extends wepy.component {
 
       this.syncView(animationViewName, animation); //  同步动画到视图
 
+      // tab定位线的动画
       const lineAnimation = wx.createAnimation({
         transformOrigin: "50% 50%",
         duration: speed,
@@ -318,11 +319,8 @@ export default class weSwiper extends wepy.component {
         delay: 0
       });
 
-      // lineAnimation[`translate${XORY}`](translate / this.slideLength).step();
-      // this.syncView(lineAnimationViewName, lineAnimation);
-      this.stv.offset = translate / this.slideLength * -1;
-
-      console.log(this.stv.offset);
+      lineAnimation[`translate${XORY}`](-translate / this.slideLength).step();
+      this.syncView(lineAnimationViewName, lineAnimation);
     } catch (err) {
       consoleException(err, "slideAnimation[Function]");
     }
@@ -376,9 +374,7 @@ export default class weSwiper extends wepy.component {
     this.tabTiles = tabTiles;
     this.slideLength = tabTiles.length;
 
-    this.stv.windowWidth = this.width;
-    this.stv.lineWidth = this.width / tabTiles.length;
-    this.stv.offset = 0;
+    this.tabWidth = this.width / tabTiles.length;
 
     this.slideTo(initialSlide, 0);
     typeof autoplay === "number" &&
@@ -402,8 +398,6 @@ export default class weSwiper extends wepy.component {
     const CONFIG = Object.assign(this, DEFAULT, option);
 
     this.initSwiper(CONFIG);
-
-    console.log(this);
   }
 }
 </script>
@@ -452,24 +446,32 @@ Page{
 .we-container .tab-bar {
   position: relative;
   width: 100%;
-  display: flex;
   font-size: 30rpx;
   color: #666666;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:row;
 }
 .we-container .tab-bar .tab-active {
   color: #e91e63;
   transition: all 100ms ease;
 }
 .we-container .tab-bar .tab {
+  width:auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 16rpx;
   padding-bottom: 20rpx;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
 }
 .we-container .tab-bar .under-line {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  margin-top:66rpx;
   height: 6rpx;
   background-color: #e91e63;
   transition: all 100ms ease;
@@ -485,12 +487,6 @@ Page{
   -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
-}
-.we-container .scroll-view {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #e7eaef;
 }
 
 .we-wrapper{
