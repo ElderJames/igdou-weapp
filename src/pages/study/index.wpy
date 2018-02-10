@@ -1,13 +1,11 @@
 <template>
   <view class="container">
     <swiper :option="swiper">
-      <view class="we-slide ripple">slide 1</view>
-      <view class="we-slide ripple">slide 2</view>
-      <view class="we-slide ripple">slide 3</view>
-      <view class="we-slide ripple">slide 4</view>
-      <view class="we-slide ripple">slide 5</view>
-      <view class="we-slide ripple">slide 6</view>
-      <view class="we-slide ripple">slide 7</view>
+      <repeat for="{{swiper.tabTiles}}" key="index" index="index" item="item">
+        <view class="we-slide ripple">
+          Slide {{index+1}}
+        </view>
+      </repeat>
     </swiper>
   </view>
 </template>
